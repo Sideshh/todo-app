@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Todo Frontend
 
-## Getting Started
+A responsive Next.js frontend for managing TODOs through the accompanying
+NestJS REST API.
 
-First, run the development server:
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Redux Toolkit
+- HeroUI
+- Tailwind CSS
+
+## Features
+
+- View, create, edit, and delete TODOs
+- Mark TODOs as completed or active
+- Search by title or description
+- Filter by All, Active, and Completed
+- Sort by creation date
+- Loading, empty, error, and success states
+- Responsive user interface
+
+## Setup
+
+Install the frontend dependencies:
+
+```bash
+npm install
+```
+
+Create `.env.local` in the `client` directory using `.env.sample` as a
+reference:
+
+```bash
+NEXT_PUBLIC_REST_API_URL=http://localhost:3001/api
+```
+
+## Start the Frontend
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the application at:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Backend Dependency
 
-## Learn More
+The NestJS backend must be running and accessible at:
 
-To learn more about Next.js, take a look at the following resources:
+```text
+http://localhost:3001/api
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## State Management
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Redux Toolkit manages TODO state, loading and error states, and API-related
+actions. Search, filtering, and sorting are performed in the frontend after the
+TODOs are loaded.
 
-## Deploy on Vercel
+## Assumptions and Limitations
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- The backend API is running before the frontend is started.
+- The frontend expects the TODO API endpoints under `/api/todos`.
+- Search, filtering, and sorting operate on the TODOs currently loaded in the
+  browser; server-side pagination is outside the assignment scope.
